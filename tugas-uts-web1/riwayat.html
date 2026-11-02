@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>History Transaksi — Pustaka Terbuka</title>
+  <meta name="description" content="Riwayat transaksi pemesanan.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="riwayat">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"> Pustaka Terbuka</a>
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul>
+        <li><a href="dashboard.html" data-nav="dashboard">Beranda</a></li>
+        <li><a href="stok.html" data-nav="stok">Katalog</a></li>
+        <li><a href="checkout.html" data-nav="checkout">Pesan <span class="badge-n" data-cart-count hidden>0</span></a></li>
+        <li><a href="tracking.html" data-nav="tracking">Tracking</a></li>
+        <li><a href="laporan.html" data-nav="laporan">Laporan</a></li>
+        <li><a href="riwayat.html" data-nav="riwayat">Riwayat</a></li>
+        </ul>
+      </nav>
+      <div class="user-box">
+        <span class="avatar" id="user-avatar" aria-hidden="true">?</span>
+        <span class="uname" id="user-nama"></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-logout">Keluar</button>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Buka menu" aria-controls="site-nav" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+  <main class="page"><div class="wrap">
+    <div class="page-head"><div><p class="eyebrow">Riwayat</p><h1>History Transaksi</h1><p>Semua transaksi pemesanan beserta status pengirimannya.</p></div></div>
+    <div class="toolbar">
+      <div class="search"><label class="sr-only" for="cari-riwayat">Cari transaksi</label><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" id="cari-riwayat" type="search" placeholder="Cari nomor DO, nama, ekspedisi…"></div>
+      <label class="sr-only" for="filter-status">Filter status</label>
+      <select class="input" id="filter-status" style="width:auto"><option value="">Semua status</option><option>Diproses</option><option>Dikirim</option><option>Dalam Perjalanan</option><option>Selesai</option></select>
+      <span class="muted" id="jumlah-riwayat"></span>
+    </div>
+    <div class="table-wrap">
+      <table><caption class="sr-only">Daftar transaksi</caption>
+        <thead><tr><th scope="col">No. DO</th><th scope="col">Tanggal</th><th scope="col">Pemesan</th><th scope="col">Ekspedisi</th><th scope="col">Pembayaran</th><th scope="col" class="num">Total</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Aksi</span></th></tr></thead>
+        <tbody id="tbody-riwayat"></tbody>
+      </table>
+    </div>
+  </div></main>
+  <footer class="site-footer"><div class="wrap">© 2026 Pustaka Terbuka · Tugas UTS Pemrograman Web 1 · HTML, CSS &amp; JavaScript murni</div></footer>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

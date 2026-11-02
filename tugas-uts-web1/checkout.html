@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pemesanan — Pustaka Terbuka</title>
+  <meta name="description" content="Checkout pemesanan buku.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="checkout">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"> Pustaka Terbuka</a>
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul>
+        <li><a href="dashboard.html" data-nav="dashboard">Beranda</a></li>
+        <li><a href="stok.html" data-nav="stok">Katalog</a></li>
+        <li><a href="checkout.html" data-nav="checkout">Pesan <span class="badge-n" data-cart-count hidden>0</span></a></li>
+        <li><a href="tracking.html" data-nav="tracking">Tracking</a></li>
+        <li><a href="laporan.html" data-nav="laporan">Laporan</a></li>
+        <li><a href="riwayat.html" data-nav="riwayat">Riwayat</a></li>
+        </ul>
+      </nav>
+      <div class="user-box">
+        <span class="avatar" id="user-avatar" aria-hidden="true">?</span>
+        <span class="uname" id="user-nama"></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-logout">Keluar</button>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Buka menu" aria-controls="site-nav" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+  <main class="page"><div class="wrap">
+    <div class="page-head"><div><p class="eyebrow">Pemesanan</p><h1>Checkout</h1><p>Atur jumlah buku, isi data pemesan, lalu pilih pembayaran.</p></div></div>
+    <form id="form-checkout" class="checkout-layout" novalidate>
+      <div class="stack">
+        <section class="card" style="padding:0" aria-labelledby="h-keranjang">
+          <div style="padding:1.2rem 1.4rem .4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem"><h2 id="h-keranjang" style="margin:0">1. Data pemesanan</h2><button type="button" class="btn btn-ghost btn-sm" id="btn-kosong">Kosongkan</button></div>
+          <div class="table-wrap" style="border:0;box-shadow:none;border-radius:0">
+            <table><caption class="sr-only">Isi keranjang</caption>
+              <thead><tr><th scope="col">Buku</th><th scope="col" class="num">Harga</th><th scope="col">Jumlah</th><th scope="col" class="num">Subtotal</th><th scope="col"><span class="sr-only">Hapus</span></th></tr></thead>
+              <tbody id="tbody-keranjang"></tbody>
+            </table>
+          </div>
+          <div class="add-line">
+            <label class="sr-only" for="pilih-buku">Pilih buku</label><select class="input" id="pilih-buku"></select>
+            <label class="sr-only" for="qty-tambah">Jumlah</label><input class="input" id="qty-tambah" type="number" min="1" value="1" style="width:84px">
+            <button type="button" class="btn btn-dark" id="btn-tambah"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Tambah</button>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="h-pemesan">
+          <h2 id="h-pemesan">2. Informasi pemesan</h2>
+          <div class="grid-2">
+            <div class="field"><label for="nama-pemesan">Nama lengkap</label><input id="nama-pemesan" name="nama-pemesan" type="text" placeholder="" autocomplete="name" required><div class="err" role="alert"></div></div>
+            <div class="field"><label for="email-pemesan">Email</label><input id="email-pemesan" name="email-pemesan" type="email" placeholder="" autocomplete="email" required><div class="err" role="alert"></div></div>
+          </div>
+          <div class="grid-2">
+            <div class="field"><label for="telepon">No. telepon / WhatsApp</label><input id="telepon" name="telepon" type="tel" placeholder="081234567890" autocomplete="tel" required><div class="err" role="alert"></div></div>
+            <div class="field"><label for="kodepos">Kode pos</label><input id="kodepos" name="kodepos" type="text" placeholder="15310" inputmode="numeric" maxlength="5" autocomplete="postal-code" required><div class="err" role="alert"></div></div>
+          </div>
+          <div class="field"><label for="alamat">Alamat lengkap</label><textarea id="alamat" name="alamat" autocomplete="street-address" required placeholder="Jalan, nomor, kelurahan, kota"></textarea><div class="err" role="alert"></div></div>
+          <div class="field"><label for="ekspedisi">Ekspedisi</label><select id="ekspedisi" name="ekspedisi" required><option value="">— Pilih ekspedisi —</option><option value="JNE">JNE · Rp 15.000</option><option value="Pos Indonesia">Pos Indonesia · Rp 12.000</option><option value="J&amp;T Express">J&amp;T Express · Rp 18.000</option><option value="SiCepat">SiCepat · Rp 14.000</option></select><div class="err" role="alert"></div></div>
+        </section>
+
+        <section class="card" aria-labelledby="h-bayar">
+          <h2 id="h-bayar">3. Pembayaran</h2>
+          <fieldset class="pay-options"><legend>Metode pembayaran</legend>
+            <label class="pay"><input type="radio" name="metode" value="Transfer Bank"><span>Transfer Bank</span></label><label class="pay"><input type="radio" name="metode" value="Virtual Account"><span>Virtual Account</span></label><label class="pay"><input type="radio" name="metode" value="QRIS"><span>QRIS</span></label><label class="pay"><input type="radio" name="metode" value="COD"><span>Bayar di Tempat (COD)</span></label>
+          </fieldset>
+          <p class="err-pay" role="alert">Pilih salah satu metode pembayaran.</p>
+        </section>
+      </div>
+
+      <aside class="card summary" aria-labelledby="h-ringkas">
+        <h2 id="h-ringkas">Ringkasan</h2>
+        <div class="sum-row"><span>Jumlah</span><span id="sum-item">0 item</span></div>
+        <div class="sum-row"><span>Subtotal</span><span id="sum-sub">Rp 0</span></div>
+        <div class="sum-row"><span>Ongkos kirim</span><span id="sum-ongkir">Rp 0</span></div>
+        <div class="sum-row total"><span>Total</span><span id="sum-total">Rp 0</span></div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:1rem">Buat pesanan</button>
+      </aside>
+    </form>
+  </div></main>
+
+  <dialog id="dlg-sukses" aria-labelledby="sukses-title">
+    <div class="dlg-body">
+      <div class="dlg-icon success"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></div>
+      <h2 id="sukses-title">Pesanan berhasil dibuat</h2>
+      <p class="muted">Simpan Nomor Delivery Order Anda untuk melacak pengiriman.</p>
+      <div class="do-code" id="do-sukses"></div>
+      <p>Total pembayaran: <strong id="total-sukses"></strong></p>
+      <div class="dlg-actions"><button type="button" class="btn btn-ghost" data-close>Tutup</button><a class="btn btn-primary" id="link-lacak" href="tracking.html">Lacak pesanan <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </dialog>
+  <footer class="site-footer"><div class="wrap">© 2026 Pustaka Terbuka · Tugas UTS Pemrograman Web 1 · HTML, CSS &amp; JavaScript murni</div></footer>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masuk — Pustaka Terbuka</title>
+  <meta name="description" content="Masuk ke Pustaka Terbuka, toko buku ajar online.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+  <main class="login-layout">
+    <section class="hero" aria-labelledby="hero-title">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="34" height="34"> Pustaka Terbuka</a>
+      <div>
+        <p class="eyebrow" style="color:var(--gold)">Toko buku ajar online</p>
+        <h1 id="hero-title">Buku yang kamu butuhkan, <em>sekali klik.</em></h1>
+        <p>Cek stok katalog, pesan dengan mudah, dan lacak paketmu sampai ke depan pintu — semua dalam satu tempat.</p>
+      </div>
+      <div class="shelf" aria-hidden="true"><img src="img/pengantar_komunikasi.jpg" alt=""><img src="img/manajemen_keuangan.jpg" alt=""><img src="img/kepemimpinan.jpg" alt=""><img src="img/mikrobiologi.jpg" alt=""><img src="img/paud_perkembangan.jpg" alt=""></div>
+    </section>
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="login-card card">
+        <h2 id="login-title">Selamat datang kembali</h2>
+        <p class="muted">Masuk dengan akun Anda untuk melanjutkan.</p>
+        <form id="form-login" novalidate>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="nama@email.com" autocomplete="email" required><div class="err" role="alert"></div></div>
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Masukkan password" required>
+              <button type="button" class="pw-toggle" data-target="password" aria-label="Tampilkan password"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+            <div class="err" role="alert"></div>
+          </div>
+          <div class="login-links">
+            <button type="button" class="link-btn" data-open="dlg-lupa">Lupa Password?</button>
+            <span class="muted">Belum punya akun? <button type="button" class="link-btn" data-open="dlg-daftar">Daftar</button></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-masuk">Login</button>
+        </form>
+        <aside class="demo-box" aria-label="Akun demo">
+          <strong>Akun demo (klik untuk mengisi)</strong>
+          <button type="button" class="btn btn-ghost btn-sm" data-demo="rina@gmail.com|rina123">Rina · User</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-demo="siti@gmail.com|siti123">Siti · Admin</button>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="dlg-lupa" aria-labelledby="lupa-title">
+    <form id="form-lupa" class="dlg-body" novalidate>
+      <div class="dlg-head"><h2 id="lupa-title">Lupa Password</h2><button type="button" class="dlg-close" data-close aria-label="Tutup"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <p class="muted">Masukkan email terdaftar. Kami akan mengirim tautan untuk mengatur ulang password Anda.</p>
+      <div class="field"><label for="lupa-email">Email</label><input id="lupa-email" name="lupa-email" type="email" placeholder="nama@email.com" autocomplete="email" required><div class="err" role="alert"></div></div>
+      <div class="dlg-actions"><button type="button" class="btn btn-ghost" data-close>Batal</button><button type="submit" class="btn btn-primary">Kirim tautan</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="dlg-daftar" aria-labelledby="daftar-title">
+    <form id="form-daftar" class="dlg-body" novalidate>
+      <div class="dlg-head"><h2 id="daftar-title">Buat Akun Baru</h2><button type="button" class="dlg-close" data-close aria-label="Tutup"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <div class="field"><label for="reg-nama">Nama lengkap</label><input id="reg-nama" name="reg-nama" type="text" placeholder="Nama sesuai identitas" autocomplete="name" required><div class="err" role="alert"></div></div>
+      <div class="field"><label for="reg-email">Email</label><input id="reg-email" name="reg-email" type="email" placeholder="nama@email.com" autocomplete="email" required><div class="err" role="alert"></div></div>
+      <div class="grid-2">
+        <div class="field"><label for="reg-password">Password</label><input id="reg-password" name="reg-password" type="password" placeholder="" autocomplete="new-password" required><div class="err" role="alert"></div><div class="hint">Min. 6 karakter dan memuat angka.</div></div>
+        <div class="field"><label for="reg-ulang">Ulangi password</label><input id="reg-ulang" name="reg-ulang" type="password" placeholder="" autocomplete="new-password" required><div class="err" role="alert"></div></div>
+      </div>
+      <div class="dlg-actions"><button type="button" class="btn btn-ghost" data-close>Batal</button><button type="submit" class="btn btn-primary">Daftar</button></div>
+    </form>
+  </dialog>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

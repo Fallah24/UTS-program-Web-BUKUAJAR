@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — Pustaka Terbuka</title>
+  <meta name="description" content="Menu utama Pustaka Terbuka.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"> Pustaka Terbuka</a>
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul>
+        <li><a href="dashboard.html" data-nav="dashboard">Beranda</a></li>
+        <li><a href="stok.html" data-nav="stok">Katalog</a></li>
+        <li><a href="checkout.html" data-nav="checkout">Pesan <span class="badge-n" data-cart-count hidden>0</span></a></li>
+        <li><a href="tracking.html" data-nav="tracking">Tracking</a></li>
+        <li><a href="laporan.html" data-nav="laporan">Laporan</a></li>
+        <li><a href="riwayat.html" data-nav="riwayat">Riwayat</a></li>
+        </ul>
+      </nav>
+      <div class="user-box">
+        <span class="avatar" id="user-avatar" aria-hidden="true">?</span>
+        <span class="uname" id="user-nama"></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-logout">Keluar</button>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Buka menu" aria-controls="site-nav" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+  <main class="page"><div class="wrap">
+    <section class="card greet" aria-labelledby="greeting">
+      <div>
+        <h1 id="greeting">Halo!</h1>
+        <p id="tanggal"></p>
+        <span class="role-chip" id="role"></span>
+      </div>
+      <div class="clock" aria-label="Waktu lokal"><strong id="jam">--:--:--</strong><small>waktu setempat</small></div>
+    </section>
+
+    <section class="stats" aria-label="Ringkasan">
+      <div class="card stat"><div class="num" data-count="judul">0</div><div class="lbl">Judul buku</div></div>
+      <div class="card stat"><div class="num" data-count="stok">0</div><div class="lbl">Total stok eksemplar</div></div>
+      <div class="card stat"><div class="num" data-count="pesanan">0</div><div class="lbl">Total pesanan</div></div>
+      <div class="card stat"><div class="num" data-count="keranjang">0</div><div class="lbl">Item di keranjang</div></div>
+    </section>
+
+    <section aria-labelledby="menu-title">
+      <h2 id="menu-title">Menu utama</h2>
+      <div class="menu-grid">
+        <a class="menu-card" href="stok.html"><span class="ico-box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></svg></span><h3>Informasi Stok / Katalog</h3><p>Lihat ketersediaan, harga, dan tambah baris stok baru.</p><span class="go">Buka <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="menu-card" href="tracking.html"><span class="ico-box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><h3>Tracking Pengiriman</h3><p>Lacak paket dengan nomor Delivery Order.</p><span class="go">Buka <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="menu-card" href="laporan.html"><span class="ico-box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></span><h3>Laporan Pemesanan</h3><p>Ringkasan nilai pesanan, ekspedisi, dan stok.</p><span class="go">Buka <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="menu-card" href="riwayat.html"><span class="ico-box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>History Transaksi</h3><p>Daftar seluruh transaksi dan statusnya.</p><span class="go">Buka <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+      <p style="margin-top:1.5rem"><a class="btn btn-primary" href="checkout.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12H19l2-8H6"/></svg> Buat pemesanan baru</a></p>
+    </section>
+  </div></main>
+  <footer class="site-footer"><div class="wrap">© 2026 Pustaka Terbuka · Tugas UTS Pemrograman Web 1 · HTML, CSS &amp; JavaScript murni</div></footer>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

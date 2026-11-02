@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laporan Pemesanan — Pustaka Terbuka</title>
+  <meta name="description" content="Ringkasan pemesanan.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="laporan">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"> Pustaka Terbuka</a>
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul>
+        <li><a href="dashboard.html" data-nav="dashboard">Beranda</a></li>
+        <li><a href="stok.html" data-nav="stok">Katalog</a></li>
+        <li><a href="checkout.html" data-nav="checkout">Pesan <span class="badge-n" data-cart-count hidden>0</span></a></li>
+        <li><a href="tracking.html" data-nav="tracking">Tracking</a></li>
+        <li><a href="laporan.html" data-nav="laporan">Laporan</a></li>
+        <li><a href="riwayat.html" data-nav="riwayat">Riwayat</a></li>
+        </ul>
+      </nav>
+      <div class="user-box">
+        <span class="avatar" id="user-avatar" aria-hidden="true">?</span>
+        <span class="uname" id="user-nama"></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-logout">Keluar</button>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Buka menu" aria-controls="site-nav" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+  <main class="page"><div class="wrap">
+    <div class="page-head"><div><p class="eyebrow">Laporan</p><h1>Laporan Pemesanan</h1><p>Ringkasan seluruh pesanan, termasuk yang baru Anda buat.</p></div></div>
+    <section class="stats" aria-label="Statistik">
+      <div class="card stat"><div class="num" id="lap-jumlah" style="font-size:1.6rem">0</div><div class="lbl">Total pesanan</div></div><div class="card stat"><div class="num" id="lap-total" style="font-size:1.6rem">0</div><div class="lbl">Nilai pesanan</div></div><div class="card stat"><div class="num" id="lap-rata" style="font-size:1.6rem">0</div><div class="lbl">Rata-rata per pesanan</div></div><div class="card stat"><div class="num" id="lap-selesai" style="font-size:1.6rem">0</div><div class="lbl">Pesanan selesai</div></div>
+    </section>
+    <div class="two-col">
+      <section class="card" aria-labelledby="h1"><h2 id="h1">Nilai per ekspedisi</h2><div class="bars" id="bar-ekspedisi"></div></section>
+      <section class="card" aria-labelledby="h2"><h2 id="h2">Status pesanan</h2><div class="bars" id="bar-status"></div></section>
+    </div>
+    <section class="card" style="margin-top:1.2rem" aria-labelledby="h3"><h2 id="h3">Stok per judul buku</h2><div class="bars" id="bar-stok"></div></section>
+  </div></main>
+  <footer class="site-footer"><div class="wrap">© 2026 Pustaka Terbuka · Tugas UTS Pemrograman Web 1 · HTML, CSS &amp; JavaScript murni</div></footer>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

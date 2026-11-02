@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informasi Stok — Pustaka Terbuka</title>
+  <meta name="description" content="Katalog dan stok buku ajar.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="stok">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="dashboard.html"><img src="assets/logo.svg" alt="" width="34" height="34"> Pustaka Terbuka</a>
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <ul>
+        <li><a href="dashboard.html" data-nav="dashboard">Beranda</a></li>
+        <li><a href="stok.html" data-nav="stok">Katalog</a></li>
+        <li><a href="checkout.html" data-nav="checkout">Pesan <span class="badge-n" data-cart-count hidden>0</span></a></li>
+        <li><a href="tracking.html" data-nav="tracking">Tracking</a></li>
+        <li><a href="laporan.html" data-nav="laporan">Laporan</a></li>
+        <li><a href="riwayat.html" data-nav="riwayat">Riwayat</a></li>
+        </ul>
+      </nav>
+      <div class="user-box">
+        <span class="avatar" id="user-avatar" aria-hidden="true">?</span>
+        <span class="uname" id="user-nama"></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-logout">Keluar</button>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="Buka menu" aria-controls="site-nav" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+  <main class="page"><div class="wrap">
+    <div class="page-head">
+      <div><p class="eyebrow">Katalog</p><h1>Informasi Stok Buku</h1><p>Data katalog dimuat dinamis dari <code>dataKatalogBuku</code> pada <code>data.js</code>.</p></div>
+      <button type="button" class="btn btn-primary" data-open="dlg-stok"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Tambah stok baru</button>
+    </div>
+
+    <div class="toolbar">
+      <div class="search"><label class="sr-only" for="cari">Cari buku</label><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" id="cari" type="search" placeholder="Cari kode, judul, atau jenis…"></div>
+      <label class="sr-only" for="urut">Urutkan</label>
+      <select class="input" id="urut" style="width:auto">
+        <option value="">Urutan asli</option><option value="nama">Judul A–Z</option><option value="stokDesc">Stok terbanyak</option><option value="stokAsc">Stok tersedikit</option><option value="hargaAsc">Harga termurah</option><option value="hargaDesc">Harga termahal</option>
+      </select>
+      <div class="seg" role="group" aria-label="Tampilan">
+        <button type="button" data-view="tabel" aria-pressed="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg> Tabel</button>
+        <button type="button" data-view="grid" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Kartu</button>
+      </div>
+    </div>
+    <p class="muted" style="font-size:.88rem"><span id="jumlah-hasil"></span> · total stok <strong id="total-stok">0</strong> eksemplar</p>
+
+    <div class="table-wrap" id="tabel-wrap">
+      <table id="tabel-stok">
+        <caption class="sr-only">Daftar katalog buku</caption>
+        <thead><tr><th scope="col">Sampul</th><th scope="col">Kode</th><th scope="col">Judul</th><th scope="col">Jenis</th><th scope="col" class="num">Edisi</th><th scope="col" class="num">Stok</th><th scope="col" class="num">Harga</th><th scope="col"><span class="sr-only">Aksi</span></th></tr></thead>
+        <tbody id="tbody-stok"></tbody>
+      </table>
+    </div>
+    <div class="book-grid" id="grid-buku" hidden></div>
+  </div></main>
+
+  <dialog id="dlg-stok" aria-labelledby="stok-title">
+    <form id="form-stok" class="dlg-body" novalidate>
+      <div class="dlg-head"><h2 id="stok-title">Tambah Baris Stok</h2><button type="button" class="dlg-close" data-close aria-label="Tutup"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <div class="grid-2">
+        <div class="field"><label for="kode">Kode barang</label><input id="kode" name="kode" type="text" placeholder="EKMA4501" maxlength="8" style="text-transform:uppercase" required><div class="err" role="alert"></div></div>
+        <div class="field"><label for="edisi">Edisi</label><input id="edisi" name="edisi" type="number" placeholder="1" min="1" max="99" required><div class="err" role="alert"></div></div>
+      </div>
+      <div class="field"><label for="nama">Nama barang</label><input id="nama" name="nama" type="text" placeholder="Judul buku" required><div class="err" role="alert"></div></div>
+      <div class="field"><label for="jenis">Jenis barang</label><select id="jenis" name="jenis" required><option value="">— Pilih jenis —</option><option>Buku Ajar</option><option>Modul</option><option>Buku Referensi</option><option>Buku Pendamping</option></select><div class="err" role="alert"></div></div>
+      <div class="grid-2">
+        <div class="field"><label for="stokBaru">Stok (eksemplar)</label><input id="stokBaru" name="stokBaru" type="number" placeholder="100" min="0" required><div class="err" role="alert"></div></div>
+        <div class="field"><label for="hargaBaru">Harga (Rp)</label><input id="hargaBaru" name="hargaBaru" type="number" placeholder="150000" min="1000" required><div class="err" role="alert"></div></div>
+      </div>
+      <div class="dlg-actions"><button type="button" class="btn btn-ghost" data-close>Batal</button><button type="submit" class="btn btn-primary">Simpan</button></div>
+    </form>
+  </dialog>
+  <footer class="site-footer"><div class="wrap">© 2026 Pustaka Terbuka · Tugas UTS Pemrograman Web 1 · HTML, CSS &amp; JavaScript murni</div></footer>
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
